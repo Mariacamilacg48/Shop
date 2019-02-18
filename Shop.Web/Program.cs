@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
+namespace Shop.Web
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            //Arranca por la clase Main
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        //Crea el ambiente Web y usa como configuración el Start up
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}
