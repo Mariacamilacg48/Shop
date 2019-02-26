@@ -34,6 +34,12 @@ namespace Shop.Web
                 cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            //Haga inyección de SeedDB para que reconozca la clase, que es alimentador de bd, ciclo de vida corto
+            services.AddTransient<SeedDb>();
+
+            //ciclo con vida permanente, para que la inyección sea reusada las veces que sea
+            services.AddScoped<IRepository, Repository>();
+
             //Configura políticas de cookies
             services.Configure<CookiePolicyOptions>(options =>
             {
