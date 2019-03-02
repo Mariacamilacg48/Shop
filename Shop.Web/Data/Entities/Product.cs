@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     //Clase donde tendremos las entidades, code first significa que nuestra base de datos depende de nuestro código
-    public class Product
+    public class Product : IEntity
     {
         //Clave numérica autoincrementable, necesaria, la clave primaria
         public int Id { get; set; }
@@ -35,6 +35,9 @@
         //N2 numérico de 2, el otro le pone símbolo de pesos, solo le coloca separadores de miles y 2 decimales
         [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
         public double Stock { get; set; }
+
+        //Hacer relación de tabla de productos con tabla de usuario, configuramos una relación de 1 a muchos
+        public User User { get; set; }
     }
 }
 
